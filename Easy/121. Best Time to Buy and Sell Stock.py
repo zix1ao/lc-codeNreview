@@ -24,6 +24,24 @@ Constraints:
 
 class Solution:
     def maxProfit(self, prices: [int]) -> int:
+        """
+        :param prices: [int]
+        :return: int
+        """
+
+        """
+        This problem is quite simple. It ask us to calculate the
+        maximum profit we can achieve through buying stock at the
+        lowest and selling at the highest price in the future.
+        We first initialize the profit to 0 and buy at 1st day,
+        then for the prices in the rest of the day, we compare it
+        to our buying price. If our buying price is lower, then we
+        calculate the profit by using max function to choose from
+        current profit and the difference of current price and our
+        buying price. Otherwise, we set our buying price to current
+        price. 
+        """
+
         profit = 0
         buy = prices[0]
         for price in prices[1:]:

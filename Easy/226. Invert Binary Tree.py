@@ -30,6 +30,26 @@ class TreeNode:
 
 class Solution:
     def invertTree(self, root: [TreeNode]) -> [TreeNode]:
+        """
+        :param root: [TreeNode]
+        :return: [TreeNode]
+        """
+
+        """
+        This is a binary tree problem. We are given the root of
+        a binary tree. All we have to do is to invert this tree
+        so that every left and right subtree is swapped. 
+        We can use recursion to solve this problem. First let's
+        consider the base case. If the current tree node is empty,
+        then we return null. Otherwise, we call our function and
+        traverse the left and right subtree recursively. Assign the
+        left subtree to the right and vice versa. Noted that swapping
+        should be done at the same time or we will assign the value
+        of say the updated left subtree to the right subtree, which
+        is the same.
+        """
+
+
         if not root:
             return None
         self.invertTree(root.left)

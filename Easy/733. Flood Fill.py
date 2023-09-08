@@ -32,10 +32,44 @@ Constraints:
 
 class Solution:
     def floodFill(self, image: [[int]], sr: int, sc: int, color: int) -> [[int]]:
-        if image[sr][sc] == color:
+        """
+        :param image: [[int]
+        :param sr: int
+        :param sc: int
+        :param color: int
+        :return: [[int]]
+        """
+
+        """
+        This problem is quite tricky at first glance. We are given a (m x n) integer
+        grid image where image[i][j] represents the pixel value of the image. And we
+        are also given three integers sr, sc and color. We should perform a flood fill
+        on the image starting from the pixel image[sr][sc].
+        To perform a flood fill, we should consider the starting pixel, plus any pixels
+        connected 4-directionally to the starting pixel of the same color as the starting
+        pixel, plus any pixels connected 4-directionally to those pixels
+        (also with the same color), and so on. 
+        We have to replace the color of all of the aforementioned pixels with "color".
+        
+        First of all, we will start checking at location(sr, sc) so we assign it to a
+        variable called "current". Suppose the "color" is 1, we have to determine if
+        "current" is equal to "color". If it is, then the starting pixel is already
+        colored with the target color, so no changes need to be made and we return the
+        original image. Otherwise, we will define an inner function called "fill", which
+        take in the parameters: image, sr, sc, current, color. Inside this function, we
+        have to check first if the starting coordinate is out of bounds or the current
+        color is not the same as our parameter. Next, we will assign the current color
+        to the new color. At this point, the problem is pretty straightforward. We just
+        have to recursively call our fill function and change the coordinate to the up,
+        down, left and right, with other parameters remain the same.
+        """
+
+        current = image[sr][sc]
+
+        if current == color:
             return image
 
-        self.fill(image, sr, sc, image[sr][sc], color)
+        self.fill(image, sr, sc, current, color)
 
         return image
 
@@ -53,4 +87,6 @@ class Solution:
 
 if __name__ == "__main__":
     sol = Solution()
-    print(sol.floodFill([[1,1,1],[1,1,0],[1,0,1]], 1, 1, 2))
+    print(sol.floodFill([[1,1,1],
+                                [1,1,0],
+                                [1,0,1]], 1, 1, 2))

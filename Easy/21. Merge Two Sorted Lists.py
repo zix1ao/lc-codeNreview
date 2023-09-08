@@ -33,6 +33,25 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: [ListNode], list2: [ListNode]) -> [ListNode]:
+        """
+        :param list1: [ListNode]
+        :param list2: [ListNode]
+        :return: [ListNode]
+        """
+
+        """
+        The problem is asking us to merge two sorted linked list into one
+        and return the head of it.
+        First we can create an empty listnode and its dummy listnode.
+        Then we compare the value of two linked list while they are not
+        empty and store the smaller one into that dummy listnode we created
+        before and move the list pointer to the next position. After comparing,
+        we move the dummmy listnode pointer to the next position. Finally, we
+        shall consider some edge cases, where one of the linked list is already
+        empty while the other is not. In this case, append that non-empty list
+        to the next position of dummy listnode. 
+        """
+
         current = mergedList = ListNode()
 
         while list1 and list2:
